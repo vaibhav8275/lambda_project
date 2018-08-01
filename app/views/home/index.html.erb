@@ -1,0 +1,20 @@
+<h1>Function List</h1>
+<br/>
+<% @list.functions.each do |function| %>
+  <%= 'Name: ' + function.function_name %><br/>
+  <%= 'ARN:  ' + function.function_arn %><br/>
+  <%= 'Role: ' + function.role %><br/>
+  <%= link_to 'Invoke Lambada', invoke_lambda_path(:params => {'func' => function.function_name})  %>, 
+  <%= link_to 'Show Lambada', show_path(:params => {'func' => function.function_name})  %>,
+  <%= link_to 'Destroy Lambada', destroy_path(:params => {'func' => function.function_name})  %>
+  <br/>
+  <hr/>
+
+  <%= link_to 'Create Lambada', create_path(:params => {'func' => 'my-new-lambda-function'})  %>
+<% end %>
+<br/>
+<h2>Note: You can delete and then create "my-new-lambda-function".</h2>
+<p>Right now code won't be managed. I have added whole code in home_controller.
+It need to be clean and refactor.</p>
+<p>For lambda creation first file need to be uploaded to S3 then we can create lambada with callback function. This will take time to make interactive UI and creating Asset Model.</p>
+<p> For updating lambda function, we have to update S3ObjectVersion. As well that is in progress.</p> 
